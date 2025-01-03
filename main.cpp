@@ -194,7 +194,7 @@ private:
     }
 
     void createLogicalDevice() {
-        QueueFamilyIndeces indeces = findQueueFamilies();
+        QueueFamilyIndeces indeces = findQueueFamilies(physicalDevice);
         float queuePriority = 1.0f;
 
         VkDeviceQueueCreateInfo queueCreateInfo{};
@@ -228,7 +228,7 @@ private:
     }
 
     bool isDeviceSuitable(VkPhysicalDevice device) {
-        QueueFamilyIndeces = findQueueFamilies(device);
+        QueueFamilyIndeces indeces = findQueueFamilies(device);
 
         return indeces.isComplete();
     }
@@ -250,7 +250,7 @@ private:
             if (indeces.isComplete()) {
                 break;
             }
-            i++
+            i++;
         }
 
         return indeces;
