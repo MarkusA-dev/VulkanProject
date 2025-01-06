@@ -6,13 +6,17 @@ VulkanTest: main.cpp
 VulkanTestDBG: main.cpp
 	g++ $(CFLAGS) -g -o VulkanTest main.cpp $(LDFLAGS)
 
-.PHONY: test debug clean
+.PHONY: test debug shaders clean
 
 test: VulkanTest
 	./VulkanTest
 
 debug: VulkanTestDBG
 	./VulkanTest
+
+shaders:
+	glslc ./shaders/shader.vert -o ./shaders/vert.spv
+	glslc ./shaders/shader.frag -o ./shaders/frag.spv
 
 clean:
 	rm -f VulkanTest
