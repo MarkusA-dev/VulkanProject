@@ -1,8 +1,10 @@
-CFLAGS = -std=c++17 -O2
+STB_INCLUDE_PATH = /usr/include/stb
+TINY_OBJECT_LOADER_PATH = /usr/include/tinyobjloader
+CFLAGS = -std=c++17 -O3 -I$(STB_INCLUDE_PATH) -I$(TINY_OBJECT_LOADER_PATH)
 LDFLAGS = -lglfw -lvulkan -ldl -lpthread -lX11 -lXxf86vm -lXrandr -lXi
 
 VulkanTest: main.cpp
-	g++ $(CFLAGS) -o VulkanTest main.cpp $(LDFLAGS)
+	g++ $(CFLAGS) -DNDEBUG -o VulkanTest main.cpp $(LDFLAGS)
 VulkanTestDBG: main.cpp
 	g++ $(CFLAGS) -g -o VulkanTest main.cpp $(LDFLAGS)
 
@@ -20,3 +22,4 @@ shaders:
 
 clean:
 	rm -f VulkanTest
+	rm -f ./shaders/*.spv
